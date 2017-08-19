@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.26730.8
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsecStrings", "ConsecStrings\ConsecStrings.csproj", "{095F1F25-5EAB-4D33-9EAE-350DD29F5A20}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{095F1F25-5EAB-4D33-9EAE-350DD29F5A20}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{095F1F25-5EAB-4D33-9EAE-350DD29F5A20}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{095F1F25-5EAB-4D33-9EAE-350DD29F5A20}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{095F1F25-5EAB-4D33-9EAE-350DD29F5A20}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {3F29DD51-39DA-4475-9ED2-C45B6815EF25}
+	EndGlobalSection
+EndGlobal
