@@ -71,6 +71,8 @@ namespace ConsecStrings
             }
 
             Console.WriteLine(TripleDouble(111234,1234));
+
+            Console.WriteLine(BouncingBall(3,0.66,1.5));
         }
         public static String LongestConsec(string[] strarr, int k)
         {
@@ -277,15 +279,21 @@ namespace ConsecStrings
 
         public static int BouncingBall(double height, double bounceK, double window)
         {
-            return (height < 0 || bounceK < 0 || bounceK > 1 || window > height) ? -1 : 0;
-            
-            for (double i = height; i < window; i*=bounceK)
+            if (height <= 0 || bounceK <= 0 || bounceK >= 1 || window >= height)
             {
-
+                return -1;
             }
-
-            
-
+            else
+            {
+                int numbler = -1;
+                do
+                {
+                    numbler += 2;
+                    height*=bounceK;
+                } while (window<height);
+                
+                return numbler;
+            }
         }
     }
 }
