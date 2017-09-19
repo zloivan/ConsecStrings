@@ -73,6 +73,8 @@ namespace ConsecStrings
             Console.WriteLine(TripleDouble(111234,1234));
 
             Console.WriteLine(BouncingBall(3,0.66,1.5));
+
+            Console.WriteLine(CorrectGroups("{{{[[][]][{()()}]}}}"));
         }
         public static String LongestConsec(string[] strarr, int k)
         {
@@ -295,5 +297,89 @@ namespace ConsecStrings
                 return numbler;
             }
         }
+
+
+        public static bool CorrectGroups(string groupSymbolString)
+        {
+           
+            List<int> position = new List<int>();
+
+            foreach (char item in groupSymbolString)
+            {
+
+
+                if (item=='{')
+                {
+                    position.Add(1);
+                }
+                if (item == '}' && position.Last() == 1)
+                {
+                    position.RemoveAt(position.Count - 1);
+                }
+
+
+                if (item=='[')
+                {
+                    position.Add(2);
+                }
+                if (item == ']' && position.Last() == 2)
+                {
+                    position.RemoveAt(position.Count - 1);
+                }
+
+
+                if (item=='(')
+                {
+                    position.Add(3);
+                }
+                if (item == ')' && position.Last() == 3)
+                {
+                    position.RemoveAt(position.Count - 1);
+                }
+            }
+
+            if (position.Count == 0)
+                return true;
+            else
+                return false;
+        }
+       
+        public static class Groups
+    {
+        private static readonly Dictionary<char, char> ClosingToOpeningBrace;
+        private static readonly char[] OpeningBraces;
+        private static readonly char[] ClosingBraces;
+
+        static Groups()
+        {
+            ClosingToOpeningBrace = new Dictionary<char, char>
+        {
+          { ')', '(' },
+          { ']', '[' },
+          { '}', '{' }
+        };
+            OpeningBraces = ClosingToOpeningBrace.Values.ToArray();
+            ClosingBraces = ClosingToOpeningBrace.Keys.ToArray();
+        }
+
+        public static bool Check(string input)
+        {
+            var stack = new Stack<char>();
+            foreach (char c in input.ToCharArray())
+            {
+                if (OpeningBraces.Contains(c))
+                {
+                    stack.Push(c);
+                }
+                else if (ClosingBraces.Contains(c))
+                {
+                    bool hasOpeningBrace = stack.Count != 0 && stack.Pop() == ClosingToOpeningBrace[c];
+                    if (!hasOpeningBrace) return false;
+                }
+            }
+
+            return stack.Count == 0;
+        }
     }
+}
 }
