@@ -70,9 +70,9 @@ namespace ConsecStrings
                 Console.WriteLine(floor);
             }
 
-            Console.WriteLine(TripleDouble(111234,1234));
+            Console.WriteLine(TripleDouble(111234, 1234));
 
-            Console.WriteLine(BouncingBall(3,0.66,1.5));
+            Console.WriteLine(BouncingBall(3, 0.66, 1.5));
 
             Console.WriteLine(CorrectGroups("{{{[[][]][{()()}]}}}"));
 
@@ -88,7 +88,7 @@ namespace ConsecStrings
             GetMainMethod(mishel);
             GetSecondaryMethod(mishel);
 
-            
+
 
         }
         public static String LongestConsec(string[] strarr, int k)
@@ -201,7 +201,7 @@ namespace ConsecStrings
         {
             return Enumerable.Range(0, n).Where(e => e % 3 == 0 || e % 5 == 0).Sum();
         }
-        
+
 
         public static bool ContainAllRow(int[][] row)
         {
@@ -220,20 +220,20 @@ namespace ConsecStrings
         public static int SumOfArea(int[][] board, int x, int y)
         {
             int result = 0;
-            for (int i = x; i < x+3; i++)
+            for (int i = x; i < x + 3; i++)
             {
-                for (int j = y; j < y+3; j++)
+                for (int j = y; j < y + 3; j++)
                 {
-                    result+=board[i][j];
+                    result += board[i][j];
                 }
             }
             return result;
         }
         public static bool CheckAllAreaSum(int[][] board)
         {
-            for (int i = 0; i < 9; i+=3)
+            for (int i = 0; i < 9; i += 3)
             {
-                for (int j = 0; j  <9; j+=3)
+                for (int j = 0; j < 9; j += 3)
                 {
                     if (SumOfArea(board, i, j) == 45) continue;
                     else
@@ -255,17 +255,17 @@ namespace ConsecStrings
             string[] tower = new string[floorsCount];
             for (int i = 0; i < floorsCount; i++)
             {
-                string  floor ="";
+                string floor = "";
                 floor += "'";
-                for (int emptySpace = 0; emptySpace < floorsCount-i-1; emptySpace++)
+                for (int emptySpace = 0; emptySpace < floorsCount - i - 1; emptySpace++)
                 {
                     floor += " ";
                 }
-                for (int blocks = 0; blocks < 2*i+1; blocks++)
+                for (int blocks = 0; blocks < 2 * i + 1; blocks++)
                 {
                     floor += "*";
                 }
-                for (int emptySpace = 0; emptySpace < floorsCount - i-1; emptySpace++)
+                for (int emptySpace = 0; emptySpace < floorsCount - i - 1; emptySpace++)
                 {
                     floor += " ";
                 }
@@ -288,9 +288,9 @@ namespace ConsecStrings
 
         public static int TripleDouble(long num1, long num2)
         {
-            
 
-            return Enumerable.Range(1, 9).Where(i => num1.ToString().Split().Contains(new string(Convert.ToChar(i), 3))).FirstOrDefault() ;
+
+            return Enumerable.Range(1, 9).Where(i => num1.ToString().Split().Contains(new string(Convert.ToChar(i), 3))).FirstOrDefault();
         }
 
 
@@ -306,9 +306,9 @@ namespace ConsecStrings
                 do
                 {
                     numbler += 2;
-                    height*=bounceK;
-                } while (window<height);
-                
+                    height *= bounceK;
+                } while (window < height);
+
                 return numbler;
             }
         }
@@ -316,14 +316,14 @@ namespace ConsecStrings
 
         public static bool CorrectGroups(string groupSymbolString)
         {
-           
+
             List<int> position = new List<int>();
 
             foreach (char item in groupSymbolString)
             {
 
 
-                if (item=='{')
+                if (item == '{')
                 {
                     position.Add(1);
                 }
@@ -333,7 +333,7 @@ namespace ConsecStrings
                 }
 
 
-                if (item=='[')
+                if (item == '[')
                 {
                     position.Add(2);
                 }
@@ -343,7 +343,7 @@ namespace ConsecStrings
                 }
 
 
-                if (item=='(')
+                if (item == '(')
                 {
                     position.Add(3);
                 }
@@ -358,8 +358,64 @@ namespace ConsecStrings
             else
                 return false;
         }
-       
-        public static class Groups
+
+
+        public static void GetMainMethod(EarnFood man)
+        {
+            man.ManinMethod();
+        }
+        public static void GetSecondaryMethod(EarnFood man)
+        { man.SecondaryMethod(); }
+
+        public static string BoardBuilder(int size)
+        {
+            if (size <= 0)
+            {
+                return string.Empty;
+            }
+            string Board = "";
+            //если размер четный
+            string firstRow = "";
+            string secondRow = "";
+            if (size % 2 == 0)
+            {
+                for (int i = 0; i < size / 2; i++)
+                {
+                    firstRow += "[r][b]";
+                    secondRow += "[b][r]";
+                }
+                firstRow += "\n";
+                secondRow += "\n";
+                string temp = firstRow + secondRow;
+                for (int i = 0; i < size / 2; i++)
+                {
+                    Board += temp;
+                }
+                return Board;
+            }
+            else
+            {
+                for (int i = 0; i < (size - 1) / 2; i++)
+                {
+                    firstRow += "[r][b]";
+                    secondRow += "[b][r]";
+                }
+                firstRow += "[r]\n";
+                secondRow += "[b]\n";
+                string temp = firstRow + secondRow;
+                for (int i = 0; i < (size - 1) / 2; i++)
+                {
+                    Board += temp;
+                }
+                Board += firstRow;
+                return Board;
+            }
+
+
+        }
+    }
+
+    public static class Groups
     {
         private static readonly Dictionary<char, char> ClosingToOpeningBrace;
         private static readonly char[] OpeningBraces;
@@ -396,14 +452,7 @@ namespace ConsecStrings
             return stack.Count == 0;
         }
     }
-        public static void GetMainMethod(EarnFood man)
-        {
-            man.ManinMethod();
-        }
-        public static  void GetSecondaryMethod(EarnFood man)
-        { man.SecondaryMethod(); }
-    }
-    public enum Gender {Man,Woman };
+    public enum Gender { Man, Woman };
 
     interface EarnFood
     {
@@ -411,17 +460,17 @@ namespace ConsecStrings
         void SecondaryMethod();
 
     }
-    public abstract class Human:EarnFood
+    public abstract class Human : EarnFood
     {
 
         public int Age { get; set; } = 0;
         public string Name { get; set; } = "";
-        public Gender Sex {  get; protected set; }
+        public Gender Sex { get; protected set; }
 
         public abstract void ManinMethod();
 
         public abstract void SecondaryMethod();
-        
+
 
         public override string ToString()
         {
@@ -465,61 +514,5 @@ namespace ConsecStrings
 
     }
 
-    
-
-           
-
-    }
-        public static string BoardBuilder(int size)
-        {
-
-            
-
-            
-
-            if (size<=0)
-            {
-                return string.Empty;
-            }
-            string Board = "";
-            //если размер четный
-            string firstRow = "";
-            string secondRow = "";
-            if (size%2==0)
-            {
-                for (int i = 0; i < size/2; i++)
-                {
-                    firstRow += "[r][b]";
-                    secondRow += "[b][r]";
-                }
-                firstRow += "\n";
-                secondRow += "\n";
-                string temp = firstRow + secondRow;
-                for (int i = 0; i < size/2; i++)
-                {
-                    Board += temp;
-                }
-                return Board;
-            }
-            else
-            {
-                for (int i = 0; i < (size-1) / 2; i++)
-                {
-                    firstRow += "[r][b]";
-                    secondRow += "[b][r]";
-                }
-                firstRow += "[r]\n";
-                secondRow += "[b]\n";
-                string temp = firstRow + secondRow;
-                for (int i = 0; i < (size-1)/2; i++)
-                {
-                    Board += temp;
-                }
-                Board += firstRow;
-                return Board;
-            }
-
-           
-        }
-    }
 }
+
