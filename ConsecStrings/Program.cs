@@ -75,6 +75,19 @@ namespace ConsecStrings
             Console.WriteLine(BouncingBall(3,0.66,1.5));
 
             Console.WriteLine(CorrectGroups("{{{[[][]][{()()}]}}}"));
+
+            Man michle = new Man();
+
+            GetMainMethod(michle);
+            GetSecondaryMethod(michle);
+
+            Woman mishel = new Woman();
+
+            GetMainMethod(mishel);
+            GetSecondaryMethod(mishel);
+
+            
+
         }
         public static String LongestConsec(string[] strarr, int k)
         {
@@ -381,5 +394,74 @@ namespace ConsecStrings
             return stack.Count == 0;
         }
     }
-}
+        public static void GetMainMethod(EarnFood man)
+        {
+            man.ManinMethod();
+        }
+        public static  void GetSecondaryMethod(EarnFood man)
+        { man.SecondaryMethod(); }
+    }
+    public enum Gender {Man,Woman };
+
+    interface EarnFood
+    {
+        void ManinMethod();
+        void SecondaryMethod();
+
+    }
+    public abstract class Human:EarnFood
+    {
+
+        public int Age { get; set; } = 0;
+        public string Name { get; set; } = "";
+        public Gender Sex {  get; protected set; }
+
+        public abstract void ManinMethod();
+
+        public abstract void SecondaryMethod();
+        
+
+        public override string ToString()
+        {
+            return $"Name:{Name}, Sex:{Sex}, Age:{Age}.";
+        }
+    }
+
+    public class Man : Human
+    {
+        public Man()
+        {
+            Sex = Gender.Man;
+        }
+
+        public override void ManinMethod()
+        {
+            Console.WriteLine("Men main method in earning food is hunting.");
+        }
+
+        public override void SecondaryMethod()
+        {
+            Console.WriteLine("Men secondary method in earning food is fishing.");
+        }
+    }
+    public class Woman : Human
+    {
+        public Woman()
+        {
+            Sex = Gender.Woman;
+        }
+
+        public override void ManinMethod()
+        {
+            Console.WriteLine("Womans main method in earning food is growing vegetables.");
+        }
+
+        public override void SecondaryMethod()
+        {
+            Console.WriteLine("Womans secondary method in earning food is finding.");
+        }
+
+    }
+
+    
 }
