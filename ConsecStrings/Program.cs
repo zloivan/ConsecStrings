@@ -76,6 +76,8 @@ namespace ConsecStrings
 
             Console.WriteLine(CorrectGroups("{{{[[][]][{()()}]}}}"));
 
+            Console.WriteLine(BoardBuilder(10));
+
             Man michle = new Man();
 
             GetMainMethod(michle);
@@ -464,4 +466,60 @@ namespace ConsecStrings
     }
 
     
+
+           
+
+    }
+        public static string BoardBuilder(int size)
+        {
+
+            
+
+            
+
+            if (size<=0)
+            {
+                return string.Empty;
+            }
+            string Board = "";
+            //если размер четный
+            string firstRow = "";
+            string secondRow = "";
+            if (size%2==0)
+            {
+                for (int i = 0; i < size/2; i++)
+                {
+                    firstRow += "[r][b]";
+                    secondRow += "[b][r]";
+                }
+                firstRow += "\n";
+                secondRow += "\n";
+                string temp = firstRow + secondRow;
+                for (int i = 0; i < size/2; i++)
+                {
+                    Board += temp;
+                }
+                return Board;
+            }
+            else
+            {
+                for (int i = 0; i < (size-1) / 2; i++)
+                {
+                    firstRow += "[r][b]";
+                    secondRow += "[b][r]";
+                }
+                firstRow += "[r]\n";
+                secondRow += "[b]\n";
+                string temp = firstRow + secondRow;
+                for (int i = 0; i < (size-1)/2; i++)
+                {
+                    Board += temp;
+                }
+                Board += firstRow;
+                return Board;
+            }
+
+           
+        }
+    }
 }
